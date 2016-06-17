@@ -1,0 +1,4 @@
+.vagrant/
+shared/*
+provisioning/site.retry
+!.gitkeep
