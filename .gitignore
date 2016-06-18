@@ -1,4 +1,4 @@
 .vagrant/
 shared/*
-provisioning/site.retry
+*.retry
 !.gitkeep
