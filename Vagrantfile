@@ -4,7 +4,6 @@ Vagrant.configure(2) do |config|
   config.vm.box = VM_BOX_NAME
   # config.vm.hostname = "xenial64"
   config.vm.network :private_network, ip: "192.168.38.5"
-  # config.vm.network :forwarded_port, host: 9200, guest: 9200
   config.ssh.forward_agent = true
   config.vm.provision :shell, path: "./provision/bootstrap.sh", privileged: true
 
