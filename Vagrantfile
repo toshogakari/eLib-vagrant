@@ -1,4 +1,4 @@
-VM_BOX_NAME = "bento/ubuntu-14.04".freeze
+VM_BOX_NAME = "bento/ubuntu-16.04".freeze
 
 Vagrant.configure(2) do |config|
   config.vm.box = VM_BOX_NAME
