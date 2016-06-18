@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
     vb.customize [
       "modifyvm", :id,
       "--cpus", "2", # CPUは2つ
-      "--memory", "512", # メモリは512MB
+      "--memory", "1024", # メモリは1024MB(1GB)
       "--vram", "1", # GPUメモリは1MB
       "--hwvirtex", "on", # vt-xを有効
       "--ioapic", "on", # マルチCPUを利用するのに必要っぽい
