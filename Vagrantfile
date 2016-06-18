@@ -1,37 +1,15 @@
-VM_BOX_NAME = "bento/ubuntu-16.04".freeze
+VM_BOX_NAME = "bento/ubuntu-14.04".freeze
 
 Vagrant.configure(2) do |config|
   config.vm.box = VM_BOX_NAME
   # config.vm.hostname = "xenial64"
   config.vm.network :private_network, ip: "192.168.38.5"
+  # config.vm.network :forwarded_port, host: 9200, guest: 9200
   config.ssh.forward_agent = true
   config.vm.provision :shell, path: "./provision/bootstrap.sh", privileged: true
-  # config.vm.provision :shell, privileged: true, inline: <<-SHELL
-  #   declare -a rm_dir=( \
-  #     "/var/lib/apt/lists/lock" \
-  #     "/var/cache/apt/archives/lock" \
-  #     "/var/lib/dpkg/lock" \
-  #   )
-  #
-  #   for rm_item in ${rm_dir[@]}; do
-  #     if [[ -f $rm_item ]]; then
-  #       rm -rf ${rm_item}
-  #     fi
-  #   done
-  #   apt-get -y update
-  #   apt-get -y install python2.7
-  #   apt-get -y install software-properties-common
-  #   apt-get -y install python-software-properties
-  #   apt-add-repository ppa:ansible/ansible
-  #   apt-get -y update
-  #   apt-get -y upgrade
-  #   apt-get -y install ansible
-  #   cd /vagrant/provision
-  #   ansible-playbook site.yml
-  # SHELL
 
   config.vm.synced_folder ".", "/vagrant", type: "nfs"
-  # config.vm.synced_folder "./shared", "/home/vagrant/shared", tycpe: "nfs"
+  config.vm.synced_folder "./shared", "/home/vagrant/shared", tycpe: "nfs"
 
   config.vm.provider :virtualbox do |vb|
     vb.name = "eLib_vagrant_#{VM_BOX_NAME.split('/').last.gsub(/[-.]/, '_')}"
