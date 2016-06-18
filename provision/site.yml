@@ -10,7 +10,6 @@
 
     rbenv_users: vagrant
     rbenv_group: vagrant
-    rbenv_owner: vagrant
 
     nginx_remove_default_vhost: true
 
@@ -88,6 +87,7 @@
       become: yes
       with_items:
         - build-essential
+        - python-software-properties
         - language-pack-ja
         - vim
         - emacs24-nox
@@ -143,6 +143,10 @@
       template: src=templates/default.conf dest=/etc/nginx/conf.d/default.conf mode=0644
       notify:
         - restart nginx
+
+    - name: chown vagrant:vagrant
+      file: path=/usr/local/rbenv state=directory recurse=yes owner=vagrant group=vagrant
+      become: yes
 
     - name: add bundler
       become: no
