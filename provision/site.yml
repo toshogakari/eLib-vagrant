@@ -150,7 +150,7 @@
 
     - name: add bundler
       become: no
-      gem: name=bundler state=latest include_doc=no user_install=no
+      gem: name=bundler executable=/usr/local/rbenv/shims/gem user_install=no include_doc=no state=latest
 
     # - name: remove kibana config files for nginx
     #   file: path=/etc/nginx/conf.d/kibana.conf state=absent
