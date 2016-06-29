@@ -1,4 +1,5 @@
-VM_BOX_NAME = "bento/ubuntu-16.04".freeze
+# VM_BOX_NAME = "bento/ubuntu-16.04".freeze
+VM_BOX_NAME = "pyar6329/xenial64".freeze
 
 Vagrant.configure(2) do |config|
   config.vm.box = VM_BOX_NAME
