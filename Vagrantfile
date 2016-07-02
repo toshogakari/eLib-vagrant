@@ -27,6 +27,11 @@ Vagrant.configure(2) do |config|
       "--largepages", "on", # バッファメモリを利用する
       "--paravirtprovider", "kvm", # ハイパバイザー
     ]
+    # 時刻をhostと合わせず、UTCを用いる
+    vb.customize [
+      "setextradata", :id,
+      "VBoxInternal/Devices/VMMDev/0/Config/GetHostTimeDisabled", 1
+    ]
     # # SSDにする
     # vb.customize [
     #   "storagectl", :id,
