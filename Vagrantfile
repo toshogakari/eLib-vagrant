@@ -9,7 +9,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision :shell, path: "./provision/bootstrap.sh", privileged: true
 
   config.vm.synced_folder ".", "/vagrant", type: "nfs"
-  config.vm.synced_folder "./shared", "/home/vagrant/shared", tycpe: "nfs"
+  config.vm.synced_folder "./shared", "/home/vagrant/shared", type: "nfs"
 
   config.vm.provider :virtualbox do |vb|
     vb.name = "eLib_vagrant_#{VM_BOX_NAME.split('/').last.gsub(/[-.]/, '_')}"
