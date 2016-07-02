@@ -19,7 +19,6 @@ Vagrant.configure(2) do |config|
       "modifyvm", :id,
       "--cpus", "2", # CPUは2つ
       "--memory", "1024", # メモリは1024MB(1GB)
-      "--vram", "1", # GPUメモリは1MB
       "--hwvirtex", "on", # vt-xを有効
       "--ioapic", "on", # マルチCPUを利用するのに必要っぽい
       "--acpi", "off", # 電源情報を通知しない
