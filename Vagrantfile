@@ -1,4 +1,3 @@
-# VM_BOX_NAME = "bento/ubuntu-16.04".freeze
 VM_BOX_NAME = "pyar6329/xenial64".freeze
 
 Vagrant.configure(2) do |config|
@@ -21,16 +20,16 @@ Vagrant.configure(2) do |config|
       "--memory", "1024", # メモリは1024MB(1GB)
       "--hwvirtex", "on", # vt-xを有効
       "--ioapic", "on", # マルチCPUを利用するのに必要っぽい
-      "--acpi", "off", # 電源情報を通知しない
+      "--acpi", "on", # acpi_pm(clocksource)で時間設定を同期するのに必要
       "--pae", "on", # メモリ使用量(物理アドレス拡張)を増やす
       "--nestedpaging", "off", # 仮想マシン内で仮想マシンを動作させる
       "--largepages", "on", # バッファメモリを利用する
       "--paravirtprovider", "kvm", # ハイパバイザー
     ]
-    # 時刻をhostと合わせる
+    # 時刻をhostと同期しない(systemdでnictと同期)
     vb.customize [
       "setextradata", :id,
-      "VBoxInternal/Devices/VMMDev/0/Config/GetHostTimeDisabled", 0
+      "VBoxInternal/Devices/VMMDev/0/Config/GetHostTimeDisabled", 1
     ]
     # # SSDにする
     # vb.customize [
