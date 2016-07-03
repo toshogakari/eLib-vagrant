@@ -148,6 +148,10 @@
       file: path=/usr/local/rbenv state=directory recurse=yes owner=vagrant group=vagrant
       become: yes
 
+    - name: update gems
+      become: no
+      shell: /usr/local/rbenv/shims/gem update --system
+
     - name: add bundler
       become: no
       gem: name=bundler executable=/usr/local/rbenv/shims/gem user_install=no include_doc=no state=latest
