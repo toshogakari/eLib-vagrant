@@ -1,3 +1,8 @@
+[Deprecated]
+
+開発には以下のURLを使用してください
+[https://github.com/toshogakari/eLib-docker](https://github.com/toshogakari/eLib-docker)
+
 # vagrant
 
 |name|version|
